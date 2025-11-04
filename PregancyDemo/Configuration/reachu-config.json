@@ -1,5 +1,6 @@
 {
   "apiKey": "EW2AVX1-N50MQH4-K14AZK7-X254PBJ",
+  "campaignId": 14,
   "environment": "sandbox",
   "theme": {
     "name": "Pregnancy Demo Theme",
@@ -72,8 +73,9 @@
     "fallbackLanguage": "en",
     "translationsFile": "reachu-translations"
   },
-  "liveShow": {
-    "campaignId": 0
+  "campaigns": {
+    "webSocketBaseURL": "https://dev-campaing.reachu.io",
+    "restAPIBaseURL": "https://dev-campaing.reachu.io"
   }
 }
 
