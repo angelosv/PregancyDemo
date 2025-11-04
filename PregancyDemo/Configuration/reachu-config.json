@@ -39,8 +39,8 @@
   },
   "cart": {
     "floatingCartPosition": "bottomRight",
-    "floatingCartDisplayMode": "full",
-    "floatingCartSize": "medium",
+    "floatingCartDisplayMode": "iconOnly",
+    "floatingCartSize": "small",
     "autoSaveCart": true,
     "showCartNotifications": true,
     "enableGuestCheckout": true,

@@ -73,8 +73,15 @@ struct MainTabView: View {
         }
         .overlay {
             // Global floating cart indicator
-            RFloatingCartIndicator()
-                .environmentObject(cartManager)
+            RFloatingCartIndicator(
+                customPadding: EdgeInsets(
+                    top: 0,
+                    leading: 0,
+                    bottom: 100,
+                    trailing: 16
+                )
+            )
+            .environmentObject(cartManager)
         }
     }
 }
