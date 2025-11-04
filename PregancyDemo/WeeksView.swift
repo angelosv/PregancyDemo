@@ -41,29 +41,56 @@ struct WeeksView: View {
                             .padding(.horizontal, 16)
                     }
                     
-                    // Reachu Product Slider
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Recommended Products")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.primary)
+                    // Campaign Components Section
+                    VStack(alignment: .leading, spacing: 24) {
+                        // Product Banner (auto-configured) - Featured product banner
+                        RProductBanner()
                             .padding(.horizontal, 16)
                         
-                        RProductSlider(
-                            title: "For Your Pregnancy",
-                            layout: .cards,
-                            showSeeAll: false,
-                            onProductTap: { product in
-                                print("Tapped product: \(product.title)")
-                            },
-                            onAddToCart: { product in
-                                Task {
-                                    await cartManager.addProduct(product)
-                                }
-                            },
-                            currency: cartManager.currency,
-                            country: cartManager.country
-                        )
-                        .environmentObject(cartManager)
+                        // Product Carousel (auto-configured) - Horizontal scrolling carousel
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Featured Products")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.primary)
+                                .padding(.horizontal, 16)
+                            
+                            RProductCarousel()
+                        }
+                        
+                        // Product Slider (legacy) - Recommended products
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Recommended Products")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.primary)
+                                .padding(.horizontal, 16)
+                            
+                            RProductSlider(
+                                title: "For Your Pregnancy",
+                                layout: .cards,
+                                showSeeAll: false,
+                                onProductTap: { product in
+                                    print("Tapped product: \(product.title)")
+                                },
+                                onAddToCart: { product in
+                                    Task {
+                                        await cartManager.addProduct(product)
+                                    }
+                                },
+                                currency: cartManager.currency,
+                                country: cartManager.country
+                            )
+                            .environmentObject(cartManager)
+                        }
+                        
+                        // Product Store (auto-configured) - Grid/List view
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Product Store")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.primary)
+                                .padding(.horizontal, 16)
+                            
+                            RProductStore()
+                        }
                     }
                     .padding(.top, 8)
                     
