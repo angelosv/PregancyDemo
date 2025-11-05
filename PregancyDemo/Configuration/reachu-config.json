@@ -36,6 +36,13 @@
       "textTertiary": "#48484A",
       "border": "#38383A",
       "borderSecondary": "#48484A"
+    },
+    "borderRadius": {
+      "small": 4,
+      "medium": 8,
+      "large": 12,
+      "xl": 16,
+      "circle": 999
     }
   },
   "cart": {
@@ -58,7 +65,27 @@
   "ui": {
     "enableAnimations": true,
     "showProductBrands": true,
-    "enableHapticFeedback": true
+    "enableHapticFeedback": true,
+    "shadowConfig": {
+      "cardShadowRadius": 4,
+      "cardShadowOpacity": 0.1,
+      "cardShadowOffset": {"width": 0, "height": 2},
+      "cardShadowColor": "adaptive",
+      "buttonShadowEnabled": true,
+      "buttonShadowRadius": 2,
+      "buttonShadowOpacity": 0.15,
+      "modalShadowRadius": 20,
+      "modalShadowOpacity": 0.3,
+      "enableBlurEffects": true,
+      "blurIntensity": 0.3,
+      "blurStyle": "systemMaterial"
+    }
+  },
+  "productDetail": {
+    "showNavigationTitle": false,
+    "imageFullWidth": true,
+    "imageCornerRadius": 0,
+    "imageHeight": 400
   },
   "marketFallback": {
     "countryCode": "DE",

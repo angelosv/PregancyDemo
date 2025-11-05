@@ -31,7 +31,7 @@ struct PregancyDemoApp: App {
         print("🌍 [PregnancyDemo] Current Language: \(ReachuLocalization.shared.language)")
         print("🌍 [PregnancyDemo] Available languages: \(ReachuConfiguration.shared.localizationConfiguration.translations.keys.joined(separator: ", "))")
     }
-    
+
     var body: some Scene {
         WindowGroup {
             MainTabView()
