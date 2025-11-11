@@ -10,6 +10,7 @@ import ReachuDesignSystem
 
 struct WeeksView: View {
     @EnvironmentObject var cartManager: CartManager
+    @State private var showProductStore = false
     
     var body: some View {
         NavigationView {
@@ -17,6 +18,27 @@ struct WeeksView: View {
                 VStack(spacing: 24) {
                     // Campaign Components - Solo componentes de Reachu
                     // Los componentes manejan su propio padding horizontal
+                    
+                    // Offer Banner Dynamic (loads from backend)
+                    VStack(alignment: .leading, spacing: ReachuSpacing.sm) {
+                        Text("ROfferBannerDynamic (Backend)")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(.primary)
+                            .padding(.horizontal, ReachuSpacing.md)
+                        
+                        Text("Automatically loads from backend via ComponentManager")
+                            .font(.system(size: 12))
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, ReachuSpacing.md)
+                        
+                        ROfferBannerDynamic(
+                            onNavigateToStore: {
+                                // Navigate to store view
+                                showProductStore = true
+                            }
+                        )
+                            .padding(.horizontal, ReachuSpacing.md)
+                    }
                     
                     // Product Banner (auto-configured)
                     VStack(alignment: .leading, spacing: ReachuSpacing.sm) {
@@ -81,6 +103,21 @@ struct WeeksView: View {
                         RProductCarousel()
                     }
                     
+                    // Product Carousel with specific component ID
+                    VStack(alignment: .leading, spacing: ReachuSpacing.sm) {
+                        Text("RProductCarousel (ID: 1081aa1e)")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(.primary)
+                            .padding(.horizontal, ReachuSpacing.md)
+                        
+                        Text("Using specific component ID: 1081aa1e-e9b6-4855-8ed9-70e4f630610d")
+                            .font(.system(size: 12))
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, ReachuSpacing.md)
+                        
+                        RProductCarousel(componentId: "1081aa1e-e9b6-4855-8ed9-70e4f630610d")
+                    }
+                    
                     // Product Slider (legacy)
                     VStack(alignment: .leading, spacing: ReachuSpacing.sm) {
                         Text("RProductSlider")
@@ -132,7 +169,40 @@ struct WeeksView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationBarHidden(true)
+            .sheet(isPresented: $showProductStore) {
+                NavigationView {
+                    ProductStoreView()
+                        .environmentObject(cartManager)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button("Close") {
+                                    showProductStore = false
+                                }
+                            }
+                        }
+                }
+            }
         }
+    }
+}
+
+// MARK: - Product Store View
+struct ProductStoreView: View {
+    @EnvironmentObject var cartManager: CartManager
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: ReachuSpacing.md) {
+                Text("Shop")
+                    .font(.system(size: 28, weight: .bold))
+                    .padding(.horizontal, ReachuSpacing.md)
+                    .padding(.top, ReachuSpacing.md)
+                
+                RProductStore()
+            }
+        }
+        .background(Color(.systemGroupedBackground))
     }
 }
 
