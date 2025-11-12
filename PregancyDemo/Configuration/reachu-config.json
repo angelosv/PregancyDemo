@@ -87,14 +87,6 @@
     "imageCornerRadius": 0,
     "imageHeight": 400
   },
-  "marketFallback": {
-    "countryCode": "DE",
-    "countryName": "Germany",
-    "currencyCode": "EUR",
-    "currencySymbol": "€",
-    "phoneCode": "+49",
-    "flag": "https://flagcdn.com/w40/de.png"
-  },
   "localization": {
     "defaultLanguage": "en",
     "fallbackLanguage": "en",
@@ -103,6 +95,18 @@
   "campaigns": {
     "webSocketBaseURL": "https://dev-campaing.reachu.io",
     "restAPIBaseURL": "https://dev-campaing.reachu.io"
+  },
+  "analytics": {
+    "enabled": true,
+    "mixpanelToken": "d0e5d6e5ff24fea6e7a377f04e84aa99",
+    "apiHost": "https://api-eu.mixpanel.com",
+    "trackComponentViews": true,
+    "trackComponentClicks": true,
+    "trackImpressions": true,
+    "trackTransactions": true,
+    "trackProductEvents": true,
+    "autocapture": false,
+    "recordSessionsPercent": 0
   }
 }
 

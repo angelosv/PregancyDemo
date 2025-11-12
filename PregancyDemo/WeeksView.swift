@@ -118,36 +118,6 @@ struct WeeksView: View {
                         RProductCarousel(componentId: "1081aa1e-e9b6-4855-8ed9-70e4f630610d")
                     }
                     
-                    // Product Slider (legacy)
-                    VStack(alignment: .leading, spacing: ReachuSpacing.sm) {
-                        Text("RProductSlider")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(.primary)
-                            .padding(.horizontal, ReachuSpacing.md)
-                        
-                        Text("Legacy component | Manual config: layout=.cards")
-                            .font(.system(size: 12))
-                            .foregroundColor(.secondary)
-                            .padding(.horizontal, ReachuSpacing.md)
-                        
-                        RProductSlider(
-                            title: "Recommended Products",
-                            layout: .cards,
-                            showSeeAll: false,
-                            onProductTap: { product in
-                                print("Tapped product: \(product.title)")
-                            },
-                            onAddToCart: { product in
-                                Task {
-                                    await cartManager.addProduct(product)
-                                }
-                            },
-                            currency: cartManager.currency,
-                            country: cartManager.country
-                        )
-                        .environmentObject(cartManager)
-                    }
-                    
                     // Product Store (auto-configured)
                     VStack(alignment: .leading, spacing: ReachuSpacing.sm) {
                         Text("RProductStore")
